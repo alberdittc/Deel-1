@@ -52,7 +52,7 @@ const updateTransactionJob = async (req, res) => {
       const job = await repository.paybyJobId(id);
       if (job.price) {
         const { price } = job;
-        const profilesBalance = await repository.updateBulk(ClientId, ContractorId, price); // its uses promises all to run both execution at once
+        const profilesBalance = await repository.updateBulk(ClientId, ContractorId, price); // it uses promises all
         if (profilesBalance[0] === 1 && profilesBalance[1] === 1) {
           return res.status(200).send({ message: `${price} pounds have been paid by the client id ${ClientId} to the contractor id ${ContractorId} for the job id ${job_id}`})
         } else if (!profilesBalance[0] && profilesBalance[1]) {  // It means first promise fail so its need to return the money to the contractor as there was not enough money in client balance
