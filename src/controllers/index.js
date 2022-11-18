@@ -62,7 +62,7 @@ const updateTransactionJob = async (req, res) => {
                                                   and the transaction was returned`})
         } else if (profilesBalance[0] && !profilesBalance[1]) { // Its needs to return the money to the client, the contractor did not receive the money
           await repository.rollbackClientTransaction(ClientId, price)
-          // This scenario will be a really really weird use case, as proises run concurrently
+          // This scenario will be a really really weird use case, as promises run concurrently
           return res.status(501).send({ message: `There was a problem in the transactions between ${ClientId} and contractor id ${ContractorId} for the job ${job_id}, please check DB`})
         } else { // Any other issue, no transactions have been made, maybe other responses...
           return res.status(501).send({ message: `There was a problem in the transactions between ${ClientId} and contractor id ${ContractorId} for the job ${job_id}, please check DB`})
