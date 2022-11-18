@@ -9,7 +9,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-const router = require('./routes/profile.routes');
+const router = require('./routes');
 
 app.use(morgan('dev'));
 
