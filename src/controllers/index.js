@@ -55,12 +55,12 @@ const updateTransactionJob = async (req, res) => {
         const profilesBalance = await repository.updateBulk(ClientId, ContractorId, price); // it uses promises all
         if (profilesBalance[0] === 1 && profilesBalance[1] === 1) {
           return res.status(200).send({ message: `${price} pounds have been paid by the client id ${ClientId} to the contractor id ${ContractorId} for the job id ${job_id}`})
-        } else if (!profilesBalance[0] && profilesBalance[1]) {  // It means first promise fail so its need to return the money to the contractor as there was not enough money in client balance
+        } else if (!profilesBalance[0] && profilesBalance[1]) {  // It means client did not have enough money so its need to return the money to the contractor
           await repository.rollbackContractorTransaction(ContractorId, price)
           
           return res.status(501).send({ message: `The client id ${ClientId} did not have enough money to pay ${ContractorId} for the job ${job_id} 
                                                   and the transaction was returned`})
-        } else if (profilesBalance[0] && !profilesBalance[1]) { // Its need to return the money to the client contractor did not receive the money
+        } else if (profilesBalance[0] && !profilesBalance[1]) { // Its needs to return the money to the client, the contractor did not receive the money
           await repository.rollbackClientTransaction(ClientId, price)
           // This scenario will be a really really weird use case, as proises run concurrently
           return res.status(501).send({ message: `There was a problem in the transactions between ${ClientId} and contractor id ${ContractorId} for the job ${job_id}, please check DB`})
@@ -71,7 +71,6 @@ const updateTransactionJob = async (req, res) => {
       // If relations in DB are invalid ??.. this scenario should never happen
       return res.status(404).send({ message: `There is not any contractId with id ${id}` });
   } catch(e) {
-      // Rollback? If any error
       return res.status(501).send({ message: e.message });
   }
 };
