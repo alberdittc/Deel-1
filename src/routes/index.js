@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const controller = require('../controllers/controller');
+const controller = require('../controllers/main');
 const { getProfileById } = require('../middleware/getProfile')
 
 router.use((req, res, next) => {
