@@ -10,7 +10,7 @@ http://localhost:5001/api/v1/contracts
 
 http://localhost:5001/api/v1/jobs/unpaid
 
-http://localhost:5001/api/v1/jobs/pending/5/pay
+http://localhost:5001/api/v1/jobs/pending/5/pay (POST)
 
 
 Note: I just added getProfile auth middleware for the first endpoint as a POC. I did not include for the rest of endpoints, in the real world probably a middleware like this would return a token (JWT) after a successful API login
