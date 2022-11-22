@@ -1,13 +1,17 @@
-# DEEL BACKEND TASK
-
-💫 Welcome! 🎉
-
-
-This backend exercise involves building a Node.js/Express.js app that will serve a REST API. We imagine you should spend around 3 hours at implement this feature.
-
 ## Achievements
 
-I created the first 4 endpoints. Due to time constraint I decided to deliver half of the challenge. It should be enough I think to evaluate my skills. 
+Created 4 endpoints of 7. 
+
+Note /api/v1 in the URIs
+
+http://localhost:5001/api/v1/contracts/1 (it requires to pass contract id in the header to get auth)
+
+http://localhost:5001/api/v1/contracts
+
+http://localhost:5001/api/v1/jobs/unpaid
+
+http://localhost:5001/api/v1/jobs/pending/5/pay
+
 
 Note: I just added getProfile auth middleware for the first endpoint as a POC. I did not include for the rest of endpoints, in the real world probably a middleware like this would return a token (JWT) after a successful API login
 
@@ -19,7 +23,7 @@ Also, a front end consuming the APIs had been very nice. Probably relying on a l
 
 I enjoyed a lot and I learnt a bit about Sequelieze, very handy btw
 
-A linter should be a must as well as unit/integration tests. It was time consuming, if I can spare time, at any point, I will add it
+Unit/integration tests should be a must. It was time consuming, if I can spare time, at any point, I will add it. happy to show projects with Sequelize mocking DB with chai and sinon
 
 ## Data Models
 
@@ -121,20 +125,3 @@ Below is a list of the required API's for the application.
 ]
 ```
 
-  
-
-## Going Above and Beyond the Requirements
-
-Given the time expectations of this exercise, we don't expect anyone to submit anything super fancy, but if you find yourself with extra time, any extra credit item(s) that showcase your unique strengths would be awesome! 🙌
-
-It would be great for example if you'd write some unit test / simple frontend demostrating calls to your fresh APIs.
-
-  
-
-## Submitting the Assignment
-
-When you have finished the assignment, create a github repository and send us the link.
-
-  
-
-Thank you and good luck! 🙏
